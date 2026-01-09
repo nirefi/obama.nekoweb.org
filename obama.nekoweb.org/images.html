@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/33.ico">
+    <title>wonderful images</title>
+    <style>
+    body {
+	    margin: 0;
+	    padding:0;
+    	background: #282828;
+    	font-family: Monospace;
+    	margin-left: 200px;
+    	margin-right: 200px;
+	}
+
+	.container {
+	    display: flex;
+	    flex-direction: row;
+	}
+
+	.sidebar,
+	.content {
+	    display: flex;
+	    flex-direction: column;
+	    color: #fff;
+	    min-height: 500px;
+	}
+
+	.sidebar {
+	    flex-grow: 1;
+	    min-width: 300px;
+	}
+
+	.content {
+	    flex-grow: 5;
+	    min-width: 630px;
+	    padding: 10px;
+	}
+
+	li {
+		list-style-type: none;
+		font-size: 15px;
+		text-shadow: 0 0 .5vh var(--lights), 0 0 .3vh var(--lights), 0 0 .3vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);
+		filter:brightness(1);
+		color: white;
+	}
+
+	a {
+		color: white;
+	}
+
+	li > a {
+		text-decoration: none;
+	}
+
+	li:hover {
+		animation: flicker 7s infinite;
+	}
+
+	@keyframes flicker{
+	  9%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  10%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  11%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  12%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  13%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  66%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  67%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  75%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  76%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+  }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+				<li style="--lights:#b8bb26;">
+		            <a href="main.html">&lt;&lt;home&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#b16286;">
+		            <a href="about.html">&lt;&lt;about&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#fb4934;">
+		            <a href="patriots.html">&lt;&lt;music&gt;&gt;</a>
+		        </li>
+                <li style="--lights: #689d6a;">
+		            <a href="heros.html">&lt;&lt;lobbyists&gt;&gt;</a>
+		        </li>
+		       	<li style="--lights:#458588;">
+		            <a href="images.html">&lt;&lt;images&gt;&gt;</a>
+		        </li>
+                <li style="--lights:#fe8019;">
+		            <a href="talk.html">&lt;&lt;comments&gt;&gt;</a>
+		        </li>
+            	<li id="created"></li>
+            	<li id="updated"></li>
+            	<li id="visitors"></li>
+            	<li id="followers"></li>
+				<div class="embed-container" style="position: relative; width: 170px; height: 28px;">
+				    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="opacity: 0;"></iframe>
+				    <div class="overlay-text" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; pointer-events: none;">
+				       <li style="--lights:#667286;">
+				       	&lt;&lt;follow&gt;&gt;
+				       </li>
+				    </div>
+				</div>
+			</ul>
+        </div>
+        <div class="content">
+			<p>please dont spam reload unsplash are not patriots and limit me to 50 images an hour</p>
+			<img id="patriotic-img" src="" alt="america images" />
+		</div>
+    </div>
+    <footer style="color: white;">
+    	<p>copyright obama 2024-beyond</p>
+    </footer>
+	    <script src="stats.js" ></script>
+        <script>
+        async function fetchCuratedPatrioticImage() {
+        const apiKey = 'eW5NCptHvTKbDCAohBqSd-yevSyGLG4v2xArlXkPEvI';
+        const keywords = ['american-flag', 'usa military', 'usa veterans', 'usa-salute', 'patriotism america', 'united states of america', 'usa heros', 'obama', 'usa presidents'];
+        const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
+        const url = `https://api.unsplash.com/photos/random?query=${randomKeyword}&client_id=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const imageUrl = data.urls.regular;
+
+            document.getElementById('patriotic-img').src = imageUrl;
+            document.getElementById('patriotic-img').alt = data.alt_description || "america images";
+        } catch (error) {
+            console.error("Error fetching the image:", error);
+	        }
+	    }
+
+        fetchCuratedPatrioticImage();
+	</script>
+</body>
+</html>

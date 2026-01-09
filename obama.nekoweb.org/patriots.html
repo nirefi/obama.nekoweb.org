@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/33.ico">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <title>greatest song in the world</title>
+    <style>
+    body {
+	    margin: 0;
+	    padding:0;
+    	background: #282828;
+    	font-family: Monospace;
+    	margin-left: 200px;
+    	margin-right: 200px;
+	}
+
+	.container {
+	    display: flex;
+	    flex-direction: row;
+	}
+
+	.sidebar,
+	.content {
+	    display: flex;
+	    flex-direction: column;
+	    color: #fff;
+	    min-height: 500px;
+	}
+
+	.sidebar {
+	    flex-grow: 1;
+	    min-width: 300px;
+	}
+
+	.content {
+	    flex-grow: 5;
+	    min-width: 630px;
+	    padding: 10px;
+	}
+
+	li {
+		list-style-type: none;
+		font-size: 15px;
+		text-shadow: 0 0 .5vh var(--lights), 0 0 .3vh var(--lights), 0 0 .3vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);
+		filter:brightness(1);
+		color: white;
+	}
+
+	a {
+		color: white;
+	}
+
+	li > a {
+		text-decoration: none;
+	}
+
+	li:hover {
+		animation: flicker 7s infinite;
+	}
+
+	@keyframes flicker{
+	  9%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  10%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  11%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  12%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  13%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  66%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+	  }
+	  67%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  75%{
+	    text-shadow:none;
+	   filter:brightness(.4);
+	  }
+	  76%{
+	  text-shadow: 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 .5vh var(--lights), 0 0 1vh var(--lights);;
+	  filter:brightness(1)
+  }
+}
+	#audio-player {
+	    display: flex;
+	    flex-wrap: wrap-reverse;
+	    width: 400px;
+	    background-color: #e50231;
+	    border: 2px solid;
+	    border-image: url("img/b_ext.webp");
+	    border-image-slice: 2;
+	    border-image-width: 2px;
+	    border-image-outset: 1px;
+	    border-image-repeat: stretch;
+	    padding: 2px;
+	    background-image: url("img/logo.webp");
+	    background-position: bottom 2px right 4px;
+	    background-repeat:no-repeat;
+	}
+
+	#audio-player div,
+	#audio-player button,
+	#audio-player span {
+	    align-self: center;
+	}
+
+	#audio-player button {
+	    width: 24px;
+	    height: 24px;
+	    cursor: pointer;
+	    border: none;
+	}
+
+	#ap-buttons {
+	    margin: 0;
+	    padding: 0;
+	}
+
+	#ap-play.play {
+	    background: url("img/play.webp");
+	}
+
+	#ap-play.play:hover {
+	    background: url("img/play_h.webp");
+	}
+
+	#ap-play.play:active {
+	    background: url("img/play_p.webp");
+	}
+
+	#ap-play.pause {
+	    background: url("img/pause.webp");
+	}
+
+	#ap-play.pause:hover {
+	    background: url("img/pause_h.webp");
+	}
+
+	#ap-play.pause:active {
+	    background: url("img/pause_p.webp");
+	}
+
+	#ap-stop {
+	    background: url("img/stop.webp")
+	}
+
+	#ap-stop:hover {
+	    background: url("img/stop_h.webp")
+	}
+
+	#ap-stop:active {
+	    background: url("img/stop_p.webp")
+	}
+
+	#ap-fwd {
+	    background: url("img/fwd.webp")
+	}
+
+	#ap-fwd:hover {
+	    background: url("img/fwd_h.webp")
+	}
+
+	#ap-fwd:active {
+	    background: url("img/fwd_p.webp")
+	}
+
+	#ap-bwd {
+	    background: url("img/bwd.webp")
+	}
+
+	#ap-bwd:hover {
+	    background: url("img/bwd_h.webp")
+	}
+
+	#ap-bwd:active {
+	    background: url("img/bwd_p.webp")
+	}
+
+	#ap-vol {
+	    background-color: #006;
+	    height: 16px;
+	    width: 32px;
+	    margin: 4px;
+	    border: 0px solid transparent;
+	    border-radius: 0px !important;
+	}
+
+	#ap-vol .ui-slider-range {
+	    background-color: #fff;
+	    border: 0px solid transparent;
+	    border-radius: 0px;
+	}
+
+	#ap-vol .ui-slider-range::after {
+	    content: url("img/vol_overlay.webp")
+	}
+
+	#ap-vol .ui-slider-handle {
+	    visibility: hidden;
+	}
+
+	#ap-vol::after {
+	    content: url("img/vol_overlay.webp")
+	}
+
+	#ap-bar {
+	    display: inline;
+	    background-color: #006;
+	    height: 6px;
+	    align-self: center;
+	    margin: 8px;
+	    flex-basis:100%;
+	}
+
+	#ap-bar-full {
+	    position: relative;
+	    background-color: white;
+	    width: 0%;
+	    /* dynamic */
+	    height: 6px;
+	}
+
+	#ap-scroller {
+	    position: relative;
+	    background-color: yellow;
+	    opacity: 1;
+	    width: 4px;
+	    height: 4px;
+	    margin-top: -9px;
+	    cursor: pointer;
+	    /*dynamic */
+	    left: 0%;
+	}
+
+	#ap-scrollerdrag {
+	    display: inline-block;
+	    margin-left: -6px;
+	    margin-top: -10px;
+	}
+
+	#ap-time-current,
+	#ap-time-max {
+	    font-weight: 1000;
+	    text-shadow: 1px 1px 0px #006;
+	}
+
+	#ap-time {
+	    margin: 4px;
+	    text-align: right;
+	    font-size: 13px;
+	    overflow: hidden;
+	    font-family: 'MS Gothic', mono;
+	}
+
+	#ap-current-title {
+	    flex-basis: 100%;
+	    /* breaks line */
+	    background-color: #006;
+	    font-size: 13px;
+	    padding: 4px;
+	    margin: 0px;
+
+	    border: 2px solid;
+	    border-image: url("img/b_int.webp");
+	    border-image-slice: 2;
+	    border-image-width: 2px;
+	    border-image-outset: 1px;
+	    border-image-repeat: stretch;
+	}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+				<li style="--lights:#b8bb26;">
+		            <a href="main.html">&lt;&lt;home&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#b16286;">
+		            <a href="about.html">&lt;&lt;about&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#fb4934;">
+		            <a href="patriots.html">&lt;&lt;music&gt;&gt;</a>
+		        </li>
+                <li style="--lights: #689d6a;">
+		            <a href="heros.html">&lt;&lt;lobbyists&gt;&gt;</a>
+		        </li>
+		       	<li style="--lights:#458588;">
+		            <a href="images.html">&lt;&lt;images&gt;&gt;</a>
+		        </li>
+                <li style="--lights:#fe8019;">
+		            <a href="talk.html">&lt;&lt;comments&gt;&gt;</a>
+		        </li>
+              	<li id="created"></li>
+            	<li id="updated"></li>
+            	<li id="visitors"></li>
+            	<li id="followers"></li>
+				<div class="embed-container" style="position: relative; width: 170px; height: 28px;">
+				    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="opacity: 0;"></iframe>
+				    <div class="overlay-text" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; pointer-events: none;">
+				       <li style="--lights:#667286;">
+				       	&lt;&lt;follow&gt;&gt;
+				       </li>
+				    </div>
+				</div>
+	        </ul>
+        </div>
+        <div class="content">
+		<p>music player by <a href="https://github.com/CerryTsuki/CerisePlayer/tree/main">cerrytsuki</a>, a true american hero.</p>
+		    <div id="audio-player">
+        <audio id="ap-current">
+            <source id="ap-source" src="audio/star.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <span id="ap-currenttrack"></span>
+        <!-- buttons -->
+        <button id="ap-bwd"></button>
+        <button id="ap-play" class="play"></button>
+        <button id="ap-stop"></button>
+        <button id="ap-fwd"></button>
+        <div id="ap-vol"></div>
+        <span id="ap-time">
+            <span id="ap-time-current">0:00</span>/<span id="ap-time-max">0:00</span>
+        </span>
+        <div id="ap-bar">
+            <div id="ap-bar-full"></div>
+            <div id="ap-scroller"><img src="img/scroller.webp" id="ap-scrollerdrag"></div>
+        </div>
+
+        <div id="ap-current-title">CerisePlayer # No songs detected.</div>
+    </div>
+
+	</div>
+    </div>
+    <footer style="color: white;">
+    	<p>copyright obama 2024-beyond</p>
+    </footer>
+    <script src="musicplayer.js" ></script>
+    <script src="stats.js" ></script>
+</body>
+</html>

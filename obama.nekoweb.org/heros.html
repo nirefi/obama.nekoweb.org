@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/33.ico">
+    <link rel="stylesheet" href="styles.css">
+    <title>lobbyists</title>
+    <style>
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+		       <li style="--lights:#b8bb26;">
+		            <a href="main.html">&lt;&lt;home&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#b16286;">
+		            <a href="about.html">&lt;&lt;about&gt;&gt;</a>
+		        </li>
+		        <li style="--lights:#fb4934;">
+		            <a href="patriots.html">&lt;&lt;music&gt;&gt;</a>
+		        </li>
+                <li style="--lights: #689d6a;">
+		            <a href="heros.html">&lt;&lt;lobbyists&gt;&gt;</a>
+		        </li>
+		       	<li style="--lights:#458588;">
+		            <a href="images.html">&lt;&lt;images&gt;&gt;</a>
+		        </li>
+                <li style="--lights:#fe8019;">
+		            <a href="talk.html">&lt;&lt;comments&gt;&gt;</a>
+		        </li>
+            	<li id="created"></li>
+            	<li id="updated"></li>
+            	<li id="visitors"></li>
+            	<li id="followers"></li>
+				<div class="embed-container" style="position: relative; width: 170px; height: 28px;">
+				    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="opacity: 0;"></iframe>
+				    <div class="overlay-text" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; pointer-events: none;">
+				       <li style="--lights:#667286;">
+				       	&lt;&lt;follow&gt;&gt;
+				       </li>
+				    </div>
+				</div>
+              </ul>
+            </div>
+        <div class="content">
+            <p>friends of the obama administration</p>
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.gif" alt="max" class="button-grow"></a>
+                <a href="https://moosyu.github.io/"><img src="https://moosyu.github.io/assets/swirlCatppuccin.gif" alt="moosyu" class="button-grow"></a>
+                <a href="https://windigone.nekoweb.org/"><img src="https://windigone.nekoweb.org/pics/button.gif" class="button-grow" alt="windigone"></a>
+                <a href="https://calicocritter.nekoweb.org/"><img src="ifujl0.png" class="button-grow" style="image-rendering: pixelated;" alt="calicocritter"></a>
+                <a href="https://axel.nekoweb.org"><img src="https://obama.nekoweb.org/x87k6g.gif" class="button-grow"/></a>
+                <a href="https://thxdee.neocities.org"><img src="https://thxdee.neocities.org/assets/buttons/dee.gif" class="button-grow"></a>
+                <a href="https://raidopaizer.nekoweb.org/"><p>raid</p></a>
+                <a href="https://testtubesterone.nekoweb.org/"><img src="https://testtubesterone.nekoweb.org/testtubesterone.png" class="button-grow"></a>
+                <a href="https://tsukuyomi.nekoweb.org"><img src="https://file.garden/ZxLGTgiSL0nJQIHE/tsuku-revised-v1/tsuku-btn-proto1.png" class="button-grow"></a>
+                <a href="https://knoxstation.neocities.org"><img src="knoxstation.gif" alt="Visit Knoxstation" class="button-grow"></a>
+                <a href=https://maddoxxing.neocities.org/><img src="dolphin.png"></a>
+                <a href="https://scythe.nekoweb.org"><img src="https://file.garden/ZxLGTgiSL0nJQIHE/tsuku-v3/scythewav-btn" title="jack into scythe.wav... NOW"/></a>
+                <a href="https://bang1338.nekoweb.org"><img src="https://bang1338.nekoweb.org/bang1338.gif" style="width: 88px;"></a>
+                <a href="https://oooeee.nekoweb.org"><img src="https://oooeee.nekoweb.org/img/misc/button.png"></a>
+                <a href="https://okayhong.com/"><p>okayhong</p></a>
+                <a href="https://lamento.nekoweb.org/"><p>lamento</p></a>
+                <a href="https://heart.nekoweb.org/"><p>heart</p></a>
+              </div>
+            <p>if you wish to be a friend of the obama administration all you have to do is send $50,000 in the obama comment section (and your url).</p>
+        </div>
+    </div>
+    <footer style="color: white;">
+    	<p>copyright obama 2024-beyond</p>
+    </footer>
+    <script src="stats.js" ></script>
+    <script>
+    let highestZIndex = 10;
+
+    document.querySelectorAll('.button-grow').forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            highestZIndex++;
+            button.style.zIndex = highestZIndex;
+        });
+
+        button.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                button.style.zIndex = 1;
+            }, 400); // match to the animation duration
+        });
+    });
+
+if (document.body.animate) {
+    document.querySelectorAll('.button-grow').forEach(button => {
+    button.addEventListener('click', pop);
+  });
+}
+
+function pop (e) {
+  // Quick check if user clicked the button using a keyboard
+  if (e.clientX === 0 && e.clientY === 0) {
+    const bbox = document.querySelector('.button-grow').getBoundingClientRect();
+    const x = bbox.left + bbox.width / 2;
+    const y = bbox.top + bbox.height / 2;
+    for (let i = 0; i < 30; i++) {
+      // We call the function createParticle 30 times
+      // We pass the coordinates of the button for x & y values
+      createParticle(x, y);
+    }
+  } else {
+    for (let i = 0; i < 30; i++) {
+      // We call the function createParticle 30 times
+      // As we need the coordinates of the mouse, we pass them as arguments
+      createParticle(e.clientX, e.clientY);
+    }
+  }
+}
+
+function createParticle (x, y) {
+    const particle = document.createElement('particle');
+    document.body.appendChild(particle);
+
+    particle.innerHTML = "🇺🇸";
+    particle.style.fontSize = `${Math.random() * 24 + 10}px`;
+    width = height = 'auto';
+
+    // Generate a random x & y destination within a distance of 75px from the mouse
+    const destinationX = x + (Math.random() - 0.5) * 2 * 75;
+    const destinationY = y + (Math.random() - 0.5) * 2 * 75;
+
+    particle.style.zIndex = '999';
+
+  // Store the animation in a variable as we will need it later
+    const animation = particle.animate([
+    {
+      // Set the origin position of the particle
+      // We offset the particle with half its size to center it around the mouse
+      transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+      opacity: 1
+    },
+    {
+      // We define the final coordinates as the second keyframe
+      transform: `translate(${destinationX}px, ${destinationY}px)`,
+      opacity: 0
+    }
+  ], {
+    // Set a random duration from 500 to 1500ms
+    duration: Math.random() * 1000 + 500,
+    easing: 'cubic-bezier(0, .9, .57, 1)',
+    // Delay every particle with a random value of 200ms
+    delay: Math.random() * 200
+  });
+
+  // When the animation is complete, remove the element from the DOM
+  animation.onfinish = () => {
+    particle.remove();
+  };
+}
+</script>
+</body>
+</html>
